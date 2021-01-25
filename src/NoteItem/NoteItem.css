@@ -1,0 +1,97 @@
+.note-item {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  width: 240px;
+  height: 200px;
+  margin-right: 2.5%;
+  margin-bottom: 2.5%;
+  padding: 15px;
+  background-color: #fff;
+  filter: drop-shadow(9px 9px 9px rgba(177, 224, 255, 0.25));
+}
+
+.pin {
+  position: absolute;
+  top: -1rem;
+  left: 8.8rem;
+}
+
+.functions {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 16px;
+  margin-bottom: 1rem;
+}
+
+.functions1 {
+  display: flex;
+}
+
+.delete {
+  height: 16px;
+  width: 16px;
+  background-image: url(./NoteItemIcons/delete.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+.done {
+  height: 16px;
+  width: 16px;
+  background-image: url(./NoteItemIcons/done.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+.change {
+  height: 16px;
+  width: 16px;
+  background-image: url(./NoteItemIcons/change.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  cursor: pointer;
+}
+
+.functions2 {
+  display: flex;
+}
+
+.settings {
+  height: 16px;
+  width: 16px;
+  background-image: url(./NoteItemIcons/settings.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  cursor: pointer;
+}
+
+.note-title {
+  position: absolute;
+  top: 3rem;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 1rem;
+}
+
+.note-text-container {
+  line-height: 19px;
+}
+
+.note-text {
+  display: inline-block;
+  position: absolute;
+  top: 6rem;
+  left: 1.07rem;
+  padding-right: 1rem;
+  font-size: 12px;
+}
