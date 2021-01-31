@@ -10,6 +10,7 @@ export default class SearchPanel extends Component {
             <form action="#" className="search-form">
               <div className="castom-input">
                 <input
+                className="search"
                   type="search"
                   id="notes-search"
                   placeholder="search...."

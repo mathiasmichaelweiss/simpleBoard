@@ -7,7 +7,8 @@
   margin-right: 2.5%;
   margin-bottom: 2.5%;
   padding: 15px;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(3px);
   filter: drop-shadow(9px 9px 9px rgba(177, 224, 255, 0.25));
 }
 
@@ -40,7 +41,18 @@
   cursor: pointer;
 }
 
-.done {
+.done_false {
+  height: 16px;
+  width: 16px;
+  background-image: url(./NoteItemIcons/done_false.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+.done_true {
   height: 16px;
   width: 16px;
   background-image: url(./NoteItemIcons/done.svg);
@@ -81,6 +93,7 @@
   font-weight: 700;
   font-size: 18px;
   margin-bottom: 1rem;
+  padding-right: 1rem;
 }
 
 .note-text-container {

@@ -99,6 +99,10 @@ body {
   background: #f6fcff;
   height: 80vh;
   line-height: 19px;
+  /* background-image: url(./desk.jpg);
+  background-size: 170%;
+  background-position: center;
+  background-repeat: no-repeat; */
 }
 
 .container {
@@ -108,4 +112,36 @@ body {
   height: 94vh;
   display: flex;
   margin: 0 auto;
+}
+
+.hidden {
+  display: none;
+  opacity: 0;
+}
+
+::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: rgba(0, 54, 94, 0.46);
+  font-weight: 700;
+}
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: rgba(0, 54, 94, 0.46);
+  font-weight: 700;
+}
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: rgba(0, 54, 94, 0.46);
+  font-weight: 700;
+}
+:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: rgba(0, 54, 94, 0.46);
+  font-weight: 700;
+}
+
+.notes-block-container {
+  width: 89%;
+  height: 100%;
+  padding: 30px 40px;
 }

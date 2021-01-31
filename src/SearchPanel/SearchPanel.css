@@ -35,8 +35,10 @@
   border-radius: 2px;
 }
 
-input {
+.search {
   color: rgba(0, 54, 94, 0.46);
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(3px);
   font-weight: 700;
   padding-left: 2.5rem;
 }

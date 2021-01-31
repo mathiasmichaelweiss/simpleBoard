@@ -3,14 +3,33 @@ import NoteItem from "../NoteItem/NoteItem";
 
 import "./NoteBoard.css";
 
-export default function NoteBoard(props) {
-  return (
-    <>
-      <div className="noteBoard-container">
-        {props.todo.map((todo, index) => {
-          return <NoteItem todo={todo} key={todo.id} index={index} />;
-        })}
-      </div>
-    </>
-  );
+export default class NoteBoard extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    const { onDelete, todos, onCompleted, isCompleted } = this.props;
+    console.log(isCompleted);
+    return (
+      <>
+        <div className="noteBoard-container">
+          {todos.map(todo => {
+            if (todo.id) {
+              return (
+                <NoteItem
+                  todo={todo}
+                  key={todo.id}
+                  onDelete={() => onDelete(todo.id)}
+                  onCompleted={() => onCompleted(todo.id)}
+                  id={todo.id}
+                  isCompleted={isCompleted}
+                />
+              );
+            }
+          })}
+        </div>
+      </>
+    );
+  }
 }
