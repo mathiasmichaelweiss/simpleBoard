@@ -1,0 +1,57 @@
+.prof-settings-container {
+  background-color: #fff;
+  padding: 40px;
+  margin-top: 5rem;
+  width: 57%;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 12px;
+  font-weight: 600;
+  color: #00365e;
+}
+
+.prof-title {
+  font-size: 24px;
+  margin-bottom: 18px;
+}
+
+.prof-descr {
+  margin-bottom: 24px;
+}
+
+.prof-set-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.photo {
+  width: 110px;
+  height: 150px;
+  margin-bottom: 12px;
+  border-radius: 2px;
+}
+
+.pr-set-input {
+  width: 100%;
+  border: 1px solid rgba(0, 54, 94, 0.1);
+  box-sizing: border-box;
+  border-radius: 2px;
+  margin-bottom: 15px;
+  padding: 0.3rem;
+}
+.add-photo {
+  width: 70%;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 15px;
+}
+
+.mr-zero {
+  margin-right: 0;
+}
+
+.mb15 {
+  margin-bottom: 15px;
+}

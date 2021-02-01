@@ -29,7 +29,14 @@ export default class HorizontalMenu extends Component {
   }
 
   render() {
-    const { onEnterCloseModal, addItem } = this.props;
+    const { onEnterCloseModal, addItem, isHomePage, openHomePage } = this.props;
+    let homeClass = "folders";
+    if (isHomePage) {
+      homeClass = "folders_active";
+    } else {
+      homeClass = "folders";
+    }
+
     return (
       <>
         <div className="horison-menu">
@@ -49,7 +56,9 @@ export default class HorizontalMenu extends Component {
           </div>
           <div className="horison-menu-second-block">
             <div className="folders">Folders</div>
-            <div className="folders">Home</div>
+            <div className={homeClass} onClick={() => openHomePage()}>
+              Home
+            </div>
             <div className="folders">Calendar</div>
           </div>
           <div className="horison-menu-third-block">

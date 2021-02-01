@@ -1,9 +1,10 @@
 .container-menu {
   padding: 30px 40px;
   display: flex;
+  justify-content: center;
   flex-flow: row wrap;
   align-content: space-between;
-  width: 11%;
+  width: 15%;
   height: 100%;
   background: #fff;
 }
@@ -19,16 +20,17 @@
 
 .user {
   width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .user-photo {
-  width: 100%;
+  width: 110px;
   height: 150px;
-  background-image: url(./MenuImg/photo.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
   margin-bottom: 12px;
+  border-radius: 101px;
+  /* padding: 1rem; */
 }
 
 .user-name {

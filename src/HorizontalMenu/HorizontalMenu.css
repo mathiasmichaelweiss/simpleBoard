@@ -56,10 +56,15 @@ img {
   font-weight: 700;
   color: rgba(0, 54, 94, 0.5);
   margin-bottom: 0.5rem;
+  cursor: pointer;
 }
 
-.folders:nth-child(2) {
+.folders_active {
+  margin-right: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
   color: #00365e;
+  cursor: pointer;
 }
 
 .horison-menu-third-block {
@@ -68,7 +73,4 @@ img {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-}
-
-.sort {
 }

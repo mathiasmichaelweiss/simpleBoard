@@ -10,7 +10,7 @@ export default class NoteBoard extends Component {
 
   render() {
     const { onDelete, todos, onCompleted, isCompleted } = this.props;
-    console.log(isCompleted);
+
     return (
       <>
         <div className="noteBoard-container">
