@@ -128,7 +128,7 @@ export default class App extends Component {
         newItem,
         ...todos.slice(index + 1)
       ];
-
+asd
       return {
         todos: newArr
       };
