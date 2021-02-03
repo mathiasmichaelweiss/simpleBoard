@@ -1,0 +1,17 @@
+.folder-container {
+  width: 125px;
+  margin-top: 35px;
+  color: #00365e;
+  font-weight: 600;
+  font-size: 12px;
+  margin-right: 5%;
+}
+
+.folder {
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+}
+
+.folder-name {
+  cursor: pointer;
+}

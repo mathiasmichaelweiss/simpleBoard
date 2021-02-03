@@ -40,6 +40,8 @@
   border-radius: 2px;
   margin-bottom: 15px;
   padding: 0.3rem;
+  color: rgba(0, 54, 94, 0.46);
+  font-weight: 700;
 }
 .add-photo {
   width: 70%;

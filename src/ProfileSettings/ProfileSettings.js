@@ -9,9 +9,9 @@ export default class ProfileSettings extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      newName: "Mathias",
-      newSurname: "Weiss",
-      avatar: noAvatar
+      newName: "name",
+      newSurname: "surname",
+      avatar: photo
     };
     this.onValueChangeName = this.onValueChangeName.bind(this);
     this.onValueChangeSurname = this.onValueChangeSurname.bind(this);

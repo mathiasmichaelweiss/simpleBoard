@@ -4,9 +4,9 @@ import SearchPanel from "./SearchPanel/SearchPanel";
 import HorizontalMenu from "./HorizontalMenu/HorizontalMenu";
 import NoteBoard from "./NoteBoard/NoteBoard";
 import ProfileSettings from "./ProfileSettings/ProfileSettings";
-
+import MyFolders from "./MyFolders/MyFolders";
 import noAvatar from "./images/noAvatar.jpg";
-
+import photo from "./Menu/MenuImg/photo.jpg";
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -23,7 +23,8 @@ export default class App extends Component {
       modal: false,
       profSettings: false,
       homePage: true,
-      avatar: noAvatar,
+      myFolders: false,
+      avatar: photo,
       name: "name",
       surname: ""
     };
@@ -34,6 +35,7 @@ export default class App extends Component {
     this.openHomePage = this.openHomePage.bind(this);
     this.changeFullName = this.changeFullName.bind(this);
     this.changeAvatar = this.changeAvatar.bind(this);
+    this.openMyFolders = this.openMyFolders.bind(this);
   }
 
   getLocalStorage() {
@@ -124,8 +126,9 @@ export default class App extends Component {
   openProfSettings = () => {
     if (!this.state.profSettings) {
       this.setState({
+        homePage: false,
         profSettings: true,
-        homePage: false
+        myFolders: false
       });
     }
   };
@@ -134,7 +137,18 @@ export default class App extends Component {
     if (!this.state.homePage) {
       this.setState({
         homePage: true,
-        profSettings: false
+        profSettings: false,
+        myFolders: false
+      });
+    }
+  };
+
+  openMyFolders = () => {
+    if (!this.state.myFolders) {
+      this.setState({
+        homePage: false,
+        profSettings: false,
+        myFolders: true
       });
     }
   };
@@ -145,6 +159,7 @@ export default class App extends Component {
       modal,
       profSettings,
       homePage,
+      myFolders,
       avatar,
       name,
       surname
@@ -157,6 +172,7 @@ export default class App extends Component {
             <Menu
               openProfSettings={this.openProfSettings}
               openHomePage={this.openHomePage}
+              openMyFolders={this.openMyFolders}
               avatar={avatar}
               name={name}
               surname={surname}
@@ -188,6 +204,7 @@ export default class App extends Component {
             <Menu
               openProfSettings={this.openProfSettings}
               openHomePage={this.openHomePage}
+              openMyFolders={this.openMyFolders}
               avatar={avatar}
               name={name}
               surname={surname}
@@ -207,6 +224,32 @@ export default class App extends Component {
                 onCompleted={this.completedToggle}
                 isCompleted={isCompleted}
               />
+            </div>
+          </div>
+        </div>
+      );
+    } else if (myFolders) {
+      return (
+        <div className="App">
+          <div className="container">
+            <Menu
+              openProfSettings={this.openProfSettings}
+              openHomePage={this.openHomePage}
+              openMyFolders={this.openMyFolders}
+              avatar={avatar}
+              name={name}
+              surname={surname}
+            />
+            <div className="notes-block-container">
+              <SearchPanel />
+              <HorizontalMenu
+                modal={modal}
+                addItem={this.addItem}
+                onEnterCloseModal={this.onEnterCloseModal}
+                isHomePage={homePage}
+                openHomePage={this.openHomePage}
+              />
+              <MyFolders />
             </div>
           </div>
         </div>

@@ -16,6 +16,7 @@ export default class Menu extends Component {
     const {
       openProfSettings,
       openHomePage,
+      openMyFolders,
       avatar,
       name,
       surname
@@ -37,7 +38,7 @@ export default class Menu extends Component {
               </div>
               Home
             </div>
-            <div className="menu-folders">
+            <div className="menu-folders" onClick={() => openMyFolders()}>
               <div className="menu-icon">
                 <img src={folder}></img>
               </div>
