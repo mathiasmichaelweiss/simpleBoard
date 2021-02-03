@@ -13,14 +13,22 @@ export default class Menu extends Component {
   }
 
   render() {
-    const { openProfSettings, openHomePage } = this.props;
+    const {
+      openProfSettings,
+      openHomePage,
+      avatar,
+      name,
+      surname
+    } = this.props;
     return (
       <>
         <div className="container-menu">
           <div className="user">
             <div className="logo" />
-            <img className="user-photo" src={photo} />
-            <div className="user-name">Mathias Weiss</div>
+            <img className="user-photo" src={avatar} />
+            <div className="user-name">
+              {name} {surname}
+            </div>
           </div>
           <div className="menu">
             <div className="menu-home" onClick={() => openHomePage()}>

@@ -5,6 +5,8 @@ import HorizontalMenu from "./HorizontalMenu/HorizontalMenu";
 import NoteBoard from "./NoteBoard/NoteBoard";
 import ProfileSettings from "./ProfileSettings/ProfileSettings";
 
+import noAvatar from "./images/noAvatar.jpg";
+
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -20,31 +22,45 @@ export default class App extends Component {
       ],
       modal: false,
       profSettings: false,
-      homePage: true
+      homePage: true,
+      avatar: noAvatar,
+      name: "name",
+      surname: ""
     };
     this.addItem = this.addItem.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
     this.onEnterCloseModal = this.onEnterCloseModal.bind(this);
-    /* this.completedToggle = this.completedToggle.bind(this); */
     this.openProfSettings = this.openProfSettings.bind(this);
     this.openHomePage = this.openHomePage.bind(this);
+    this.changeFullName = this.changeFullName.bind(this);
+    this.changeAvatar = this.changeAvatar.bind(this);
   }
 
   getLocalStorage() {
     localStorage.setItem("allTodos", this.state.todos);
     localStorage.getItem("allTodos");
+    localStorage.setItem("name", this.state.name);
+    localStorage.getItem("name");
+    localStorage.setItem("surname", this.state.surname);
+    localStorage.getItem("surname");
   }
 
   componentWillMount() {
-    localStorage.getItem("todos") &&
+    localStorage.getItem("todos", "name", "surname") &&
       this.setState({
-        todos: JSON.parse(localStorage.getItem("todos"))
+        todos: JSON.parse(localStorage.getItem("todos")),
+        name: JSON.parse(localStorage.getItem("name")),
+        surname: JSON.parse(localStorage.getItem("surname"))
       });
   }
 
   componentWillUpdate(nextProps, nextState) {
     localStorage.setItem("todos", JSON.stringify(nextState.todos));
     localStorage.setItem("todosData", Date.now());
+    localStorage.setItem("name", JSON.stringify(nextState.name));
+    localStorage.setItem("nameData", Date.now());
+    localStorage.setItem("surname", JSON.stringify(nextState.surname));
+    localStorage.setItem("surnameData", Date.now());
   }
 
   getRandomId = () => `f${(~~(Math.random() * 1e8)).toString(16)}`;
@@ -85,18 +101,25 @@ export default class App extends Component {
     });
   }
 
+  changeFullName(addName, addSurname, avatar) {
+    this.setState({
+      name: addName,
+      surname: addSurname,
+      avatar: avatar
+    });
+  }
+
+  changeAvatar(addAvatar) {
+    this.setState({
+      avatar: addAvatar
+    });
+  }
+
   onEnterCloseModal() {
     this.setState({
       modal: false
     });
   }
-
-  /* openProfSettings() {
-    this.setState({
-      profSettings: true,
-      homePage: false
-    });
-  } */
 
   openProfSettings = () => {
     if (!this.state.profSettings) {
@@ -116,27 +139,16 @@ export default class App extends Component {
     }
   };
 
-  /*   completedToggle(id) {
-    this.setState(({ todos }) => {
-      const index = todos.findIndex(elem => elem.id === id);
-
-      const old = todos[index];
-      const newItem = { ...old, important: !old.important };
-
-      const newArr = [
-        ...todos.slice(0, index),
-        newItem,
-        ...todos.slice(index + 1)
-      ];
-asd
-      return {
-        todos: newArr
-      };
-    });
-  } */
-
   render() {
-    const { todos, modal, profSettings, homePage } = this.state;
+    const {
+      todos,
+      modal,
+      profSettings,
+      homePage,
+      avatar,
+      name,
+      surname
+    } = this.state;
     const { isCompleted } = this.state.todos;
     if (profSettings) {
       return (
@@ -145,6 +157,9 @@ asd
             <Menu
               openProfSettings={this.openProfSettings}
               openHomePage={this.openHomePage}
+              avatar={avatar}
+              name={name}
+              surname={surname}
             />
             <div className="notes-block-container">
               <SearchPanel />
@@ -155,7 +170,13 @@ asd
                 isHomePage={homePage}
                 openHomePage={this.openHomePage}
               />
-              <ProfileSettings />
+              <ProfileSettings
+                avatar={avatar}
+                name={name}
+                surname={surname}
+                changeFullName={this.changeFullName}
+                changeAvatar={this.changeAvatar}
+              />
             </div>
           </div>
         </div>
@@ -167,6 +188,9 @@ asd
             <Menu
               openProfSettings={this.openProfSettings}
               openHomePage={this.openHomePage}
+              avatar={avatar}
+              name={name}
+              surname={surname}
             />
             <div className="notes-block-container">
               <SearchPanel />
