@@ -30,7 +30,13 @@ export default class HorizontalMenu extends Component {
   }
 
   render() {
-    const { onEnterCloseModal, addItem, isHomePage, openHomePage } = this.props;
+    const {
+      onEnterCloseModal,
+      addItem,
+      isHomePage,
+      openHomePage,
+      addFolder
+    } = this.props;
     let homeClass = "folders";
     if (isHomePage) {
       homeClass = "folders_active";
@@ -85,7 +91,7 @@ export default class HorizontalMenu extends Component {
         <>
           <div className="horison-menu">
             <div className="horison-menu-first-block">
-              <div className="new-note">
+              <div className="new-note" onClick={() => addFolder()}>
                 <img src={newNote} alt="new note image" />
                 <p className="hor-menu-item-text">new folder</p>
               </div>
@@ -99,14 +105,6 @@ export default class HorizontalMenu extends Component {
             </div>
             <div className="horison-menu-third-block"></div>
           </div>
-          {this.state.isModalOpened && (
-            <NewNoteModal
-              isOpened={this.state.isModalOpened}
-              closeModal={this.closeModal}
-              addItem={addItem}
-              onEnterCloseModal={onEnterCloseModal}
-            />
-          )}
         </>
       );
     }

@@ -14,11 +14,18 @@
 }
 
 .folder-name {
-  cursor: pointer;
+  cursor: text;
 }
 
 .delete-folder-position {
   position: absolute;
   right: -0.67rem;
   top: 0.4rem;
+}
+
+.type-folder-name {
+  color: #00365e;
+  font-weight: 600;
+  font-size: 12px;
+  background: transparent;
 }

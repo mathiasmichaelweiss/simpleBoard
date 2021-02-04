@@ -24,7 +24,7 @@ export default class App extends Component {
       folders: [
         {
           id: "123asddklv",
-          title: "To-do list",
+          title: "",
           insideData: [
             {
               id: "12312sasda",
@@ -52,6 +52,7 @@ export default class App extends Component {
     this.changeFullName = this.changeFullName.bind(this);
     this.changeAvatar = this.changeAvatar.bind(this);
     this.openMyFolders = this.openMyFolders.bind(this);
+    this.addFolder = this.addFolder.bind(this);
   }
 
   getLocalStorage() {
@@ -104,17 +105,16 @@ export default class App extends Component {
   }
 
   // Add new folder to state
-  addFolder(title) {
+  addFolder() {
     const newFolder = {
       id: this.getRandomId(),
-      title: title
+      title: ""
     };
 
     this.setState(({ folders }) => {
       const newArr = [...folders, newFolder];
-
       return {
-        folsers: newArr
+        folders: newArr
       };
     });
   }
@@ -203,7 +203,8 @@ export default class App extends Component {
       myFolders,
       avatar,
       name,
-      surname
+      surname,
+      folders
     } = this.state;
     const { isCompleted } = this.state.todos;
     console.log(myFolders);
@@ -286,13 +287,13 @@ export default class App extends Component {
               <SearchPanel />
               <HorizontalMenu
                 modal={modal}
-                addItem={this.addItem}
+                addFolder={this.addFolder}
                 onEnterCloseModal={this.onEnterCloseModal}
                 isHomePage={homePage}
                 openHomePage={this.openHomePage}
                 isMyFolders={myFolders}
               />
-              <MyFolders />
+              <MyFolders folders={folders} />
             </div>
           </div>
         </div>
