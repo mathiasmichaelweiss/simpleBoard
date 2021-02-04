@@ -23,6 +23,7 @@ export default class Menu extends Component {
     } = this.props;
     return (
       <>
+        <div className="invisible-block" />
         <div className="container-menu">
           <div className="user">
             <div className="logo" />
