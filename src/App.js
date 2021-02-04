@@ -7,6 +7,7 @@ import ProfileSettings from "./ProfileSettings/ProfileSettings";
 import MyFolders from "./MyFolders/MyFolders";
 import noAvatar from "./images/noAvatar.jpg";
 import photo from "./Menu/MenuImg/photo.jpg";
+
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -18,6 +19,21 @@ export default class App extends Component {
           title: "Example note",
           text: "Write some note. To do this click 'new note'",
           isCompleted: false
+        }
+      ],
+      folders: [
+        {
+          id: "123asddklv",
+          title: "To-do list",
+          insideData: [
+            {
+              id: "12312sasda",
+              completed: false,
+              title: "Example note",
+              text: "Write some note. To do this click 'new note'",
+              isCompleted: false
+            }
+          ]
         }
       ],
       modal: false,
@@ -65,8 +81,10 @@ export default class App extends Component {
     localStorage.setItem("surnameData", Date.now());
   }
 
+  // Random id generator
   getRandomId = () => `f${(~~(Math.random() * 1e8)).toString(16)}`;
 
+  // Add new note to state
   addItem(addTitle, addText) {
     // 1) Создать новый элемент(объект)
     const newItem = {
@@ -85,6 +103,23 @@ export default class App extends Component {
     });
   }
 
+  // Add new folder to state
+  addFolder(title) {
+    const newFolder = {
+      id: this.getRandomId(),
+      title: title
+    };
+
+    this.setState(({ folders }) => {
+      const newArr = [...folders, newFolder];
+
+      return {
+        folsers: newArr
+      };
+    });
+  }
+
+  // Delete todo from state
   deleteItem(id) {
     this.setState(({ todos }) => {
       // ищем индекс элемента который хотим удалить
@@ -103,6 +138,7 @@ export default class App extends Component {
     });
   }
 
+  // Change user name and surname in state
   changeFullName(addName, addSurname, avatar) {
     this.setState({
       name: addName,
@@ -111,18 +147,21 @@ export default class App extends Component {
     });
   }
 
+  // Change avatar in state (in developing)
   changeAvatar(addAvatar) {
     this.setState({
       avatar: addAvatar
     });
   }
 
+  //  Close 'modal' on click add button
   onEnterCloseModal() {
     this.setState({
       modal: false
     });
   }
 
+  // Open 'profile settings' on click in menu
   openProfSettings = () => {
     if (!this.state.profSettings) {
       this.setState({
@@ -133,6 +172,7 @@ export default class App extends Component {
     }
   };
 
+  // Open 'home page' on click in menu
   openHomePage = () => {
     if (!this.state.homePage) {
       this.setState({
@@ -143,6 +183,7 @@ export default class App extends Component {
     }
   };
 
+  // Open 'My Folders' on click in menu
   openMyFolders = () => {
     if (!this.state.myFolders) {
       this.setState({
@@ -165,6 +206,7 @@ export default class App extends Component {
       surname
     } = this.state;
     const { isCompleted } = this.state.todos;
+    console.log(myFolders);
     if (profSettings) {
       return (
         <div className="App">
@@ -217,12 +259,12 @@ export default class App extends Component {
                 onEnterCloseModal={this.onEnterCloseModal}
                 isHomePage={homePage}
                 openHomePage={this.openHomePage}
+                onEnterCloseModal={this.onEnterCloseModal}
               />
               <NoteBoard
                 todos={todos}
                 onDelete={this.deleteItem}
                 onCompleted={this.completedToggle}
-                isCompleted={isCompleted}
               />
             </div>
           </div>
@@ -248,6 +290,7 @@ export default class App extends Component {
                 onEnterCloseModal={this.onEnterCloseModal}
                 isHomePage={homePage}
                 openHomePage={this.openHomePage}
+                isMyFolders={myFolders}
               />
               <MyFolders />
             </div>

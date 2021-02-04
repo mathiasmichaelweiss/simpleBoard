@@ -12,6 +12,7 @@ export default class Folder extends Component {
     return (
       <>
         <div className="folder-container">
+          <div className="delete delete-folder-position" />
           <div className="folder">
             <svg
               width="124"

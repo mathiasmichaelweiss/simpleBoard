@@ -22,6 +22,7 @@ export default class NoteItem extends Component {
   render() {
     const { todo, onDelete /* , onCompleted */ } = this.props;
     let classNames = "done_false";
+    
     if (this.state.isCompleted) {
       classNames = "done_true";
     }

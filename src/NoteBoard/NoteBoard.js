@@ -9,7 +9,7 @@ export default class NoteBoard extends Component {
   }
 
   render() {
-    const { onDelete, todos, onCompleted, isCompleted } = this.props;
+    const { onDelete, todos, onCompleted } = this.props;
 
     return (
       <>
@@ -23,7 +23,6 @@ export default class NoteBoard extends Component {
                   onDelete={() => onDelete(todo.id)}
                   onCompleted={() => onCompleted(todo.id)}
                   id={todo.id}
-                  isCompleted={isCompleted}
                 />
               );
             }

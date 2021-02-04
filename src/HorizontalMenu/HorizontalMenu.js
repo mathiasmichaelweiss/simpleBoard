@@ -11,7 +11,8 @@ export default class HorizontalMenu extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isModalOpened: false
+      isModalOpened: false,
+      myFolders: this.props.IsMyFolders
     };
     this.closeModal = this.closeModal.bind(this);
   }
@@ -36,47 +37,78 @@ export default class HorizontalMenu extends Component {
     } else {
       homeClass = "folders";
     }
-
-    return (
-      <>
-        <div className="horison-menu">
-          <div className="horison-menu-first-block">
-            <div className="new-note" onClick={() => this.openModal()}>
-              <img src={newNote} alt="new note image" />
-              <p className="hor-menu-item-text">new note</p>
-            </div>
-            <div className="completed">
-              <img src={completed} alt="completed image" />
-              <p className="hor-menu-item-text">completed</p>
-            </div>
-            {/* <div className="recently-deleted">
+    if (!this.props.isMyFolders) {
+      return (
+        <>
+          <div className="horison-menu">
+            <div className="horison-menu-first-block">
+              <div className="new-note" onClick={() => this.openModal()}>
+                <img src={newNote} alt="new note image" />
+                <p className="hor-menu-item-text">new note</p>
+              </div>
+              <div className="completed">
+                <img src={completed} alt="completed image" />
+                <p className="hor-menu-item-text">completed</p>
+              </div>
+              {/* <div className="recently-deleted">
               <img src={recentlyDeleted} alt="recently deleted image" />
               <p className="hor-menu-item-text">Recently deleted</p>
             </div> */}
-          </div>
-          <div className="horison-menu-second-block">
-            <div className="folders">Folders</div>
-            <div className={homeClass} onClick={() => openHomePage()}>
-              Home
             </div>
-            <div className="folders">Calendar</div>
-          </div>
-          <div className="horison-menu-third-block">
-            {/* <div className="sort">
+            <div className="horison-menu-second-block">
+              <div className="folders">Folders</div>
+              <div className={homeClass} onClick={() => openHomePage()}>
+                Home
+              </div>
+              <div className="folders">Calendar</div>
+            </div>
+            <div className="horison-menu-third-block">
+              {/* <div className="sort">
               <img src={sort} alt="sort image" />
               sort by
             </div> */}
+            </div>
           </div>
-        </div>
-        {this.state.isModalOpened && (
-          <NewNoteModal
-            isOpened={this.state.isModalOpened}
-            closeModal={this.closeModal}
-            addItem={addItem}
-            onEnterCloseModal={onEnterCloseModal}
-          />
-        )}
-      </>
-    );
+          {this.state.isModalOpened && (
+            <NewNoteModal
+              isOpened={this.state.isModalOpened}
+              closeModal={this.closeModal}
+              addItem={addItem}
+              onEnterCloseModal={onEnterCloseModal}
+              onEnterCloseModal={onEnterCloseModal}
+            />
+          )}
+        </>
+      );
+    } else {
+      return (
+        <>
+          <div className="horison-menu">
+            <div className="horison-menu-first-block">
+              <div className="new-note">
+                <img src={newNote} alt="new note image" />
+                <p className="hor-menu-item-text">new folder</p>
+              </div>
+            </div>
+            <div className="horison-menu-second-block">
+              <div className="folders">Folders</div>
+              <div className={homeClass} onClick={() => openHomePage()}>
+                Home
+              </div>
+              <div className="folders">Calendar</div>
+            </div>
+            <div className="horison-menu-third-block"></div>
+          </div>
+          {this.state.isModalOpened && (
+            <NewNoteModal
+              isOpened={this.state.isModalOpened}
+              closeModal={this.closeModal}
+              addItem={addItem}
+              onEnterCloseModal={onEnterCloseModal}
+            />
+          )}
+        </>
+      );
+    }
   }
 }

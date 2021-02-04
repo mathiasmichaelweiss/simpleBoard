@@ -9,12 +9,6 @@ export default class MyFolders extends Component {
       <>
         <div className="my-folders-container">
           <Folder />
-          <Folder />
-          <Folder />
-          <Folder />
-          <Folder />
-          <Folder />
-          <Folder />
         </div>
       </>
     );

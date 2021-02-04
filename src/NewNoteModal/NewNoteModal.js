@@ -101,7 +101,7 @@ export default class NewNoteModal extends Component {
                 <button
                   className="btn-add"
                   type="submit"
-                  onClick={onEnterCloseModal}
+                  onClick={() => onEnterCloseModal()}
                 >
                   add
                 </button>

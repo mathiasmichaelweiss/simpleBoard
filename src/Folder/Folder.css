@@ -5,6 +5,7 @@
   font-weight: 600;
   font-size: 12px;
   margin-right: 5%;
+  position: relative;
 }
 
 .folder {
@@ -14,4 +15,10 @@
 
 .folder-name {
   cursor: pointer;
+}
+
+.delete-folder-position {
+  position: absolute;
+  right: -0.67rem;
+  top: 0.4rem;
 }
